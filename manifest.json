@@ -1,0 +1,26 @@
+{
+  "manifest_version": 2,
+  "name": "Stepic pushes",
+  "description": "This extension can resieve push-notifications from Stepic.org",
+  "version": "1.0",
+  "browser_action": {
+    "default_icon": "s-green.png",
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "gcm",
+    "storage",
+    "activeTab"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": [
+        "jquery.min.js"
+      ]
+    }
+  ]
+}
