@@ -10,17 +10,19 @@
   "permissions": [
     "gcm",
     "storage",
-    "activeTab"
+    "activeTab",
+    "notifications"
   ],
-  "content_scripts": [
-    {
-      "matches": [
-        "http://*/*",
-        "https://*/*"
-      ],
-      "js": [
-        "jquery.min.js"
-      ]
-    }
-  ]
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "content_scripts": [{
+    "matches": [
+      "http://*/*",
+      "https://*/*"
+    ],
+    "js": [
+      "jquery.min.js"
+    ]
+  }]
 }

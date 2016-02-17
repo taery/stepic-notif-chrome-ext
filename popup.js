@@ -49,7 +49,7 @@ function sendRegistrationId(registrationId, callback) {
 }
 
 function registerStepicClient() {
-  var senderIds = ["629952206626"];
+  var senderIds = ["379738472939"];
   chrome.gcm.register(senderIds, registerCallback);
 }
 
