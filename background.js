@@ -3,16 +3,11 @@ function getNotificationId() {
 	return id.toString();
 }
 chrome.gcm.onMessage.addListener(function(message) {
-	var messageString = "";
-	for (var key in message.data) {
-		if (messageString != "")
-			messageString += ", "
-		messageString += key + ":" + message.data[key];
-	}
+
 	chrome.notifications.create(getNotificationId(), {
-		title: message.data['title'],
+		title: message.data['gcm.notification.title'],
 		iconUrl: 'quote.png',
 		type: 'basic',
-		message: message.data['message']
+		message: message.data['gcm.notification.body']
 	}, function() {});
 });
