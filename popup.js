@@ -18,34 +18,36 @@ function sendRegistrationId(registrationId, callback) {
   // chrome.storage.local.get("access_token", function (token) {
   // alert('There is access token:' + token.access_token);
   // });
-  if (access_token) {
-    $.ajax({
-      beforeSend: function(xhr) {
-        xhr.setRequestHeader("Authorization", "Bearer " + access_token);
-      },
-      type: 'POST',
-      dataType: 'json',
-      contentType: 'application/json',
-      data: JSON.stringify({
-        'device': {
-          'registration_id': registrationId,
-          'description': 'Chrome extension'
-        }
-      }),
-      success: function(res) {
-        registration_id = res.devices[0].registration_id;
-        document.getElementById('resp').innerHTML = res.devices[0].id + ': ' + registration_id;
-        console.log(res)
-      },
-      url: 'http://localhost:8000/api/devices',
-      error: function(e) {
-        console.log(e);
-      }
-    });
+  // if (access_token) {
+    // $.ajax({
+    //   beforeSend: function(xhr) {
+    //     xhr.setRequestHeader("Authorization", "Bearer " + access_token);
+    //   },
+    //   type: 'POST',
+    //   dataType: 'json',
+    //   contentType: 'application/json',
+    //   data: JSON.stringify({
+    //     'device': {
+    //       'registration_id': registrationId,
+    //       'description': 'Chrome extension'
+    //     }
+    //   }),
+    //   success: function(res) {
+    //     registration_id = res.devices[0].registration_id;
+    //     document.getElementById('resp').innerHTML = res.devices[0].id + ': ' + registration_id;
+    //     console.log(res)
+    //   },
+    //   url: 'http://localhost:8000/api/devices',
+    //   error: function(e) {
+    //     console.log(e);
+    //   }
+    // });
 
-  } else {
-    alert("Something went wrong, empty access_token")
-  }
+    document.getElementById('resp').innerHTML = res.devices[0].id + ': ' + registration_id;
+
+  // } else {
+    // alert("Something went wrong, empty access_token")
+  // }
 }
 
 function registerStepicClient() {
